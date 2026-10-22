@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project_name": "XƯỞNG VIDEO HƯỚNG DẪN AI (CMP DESKTOP)",
   "repository": "tuong0981922691-lang/DU-AN-VIDEO-HUONG-DAN-CMP",
-  "last_audit_timestamp": "2026-10-23T04:35:00+07:00",
+  "last_audit_timestamp": "2026-10-23T04:41:00+07:00",
   "current_milestone": "K07_RENDER_MAU_G5_CHO_NGHIEM_THU",
   "next_milestone": "K08_RENDER_TRON_9_CHUONG_15_PHUT",
   "technical_audit_metrics": {
@@ -47,7 +47,7 @@
     "video_g5_preview": {
       "title": "Mẫu video 1080p Whiteboard Hand-Rig c172 kết hợp đồ họa kỹ thuật",
       "file_name": "G5_mau_video_c172_3_phut_MAI1_MAI2_1080p.mp4",
-      "sha256": "2b2fa09c42275b927a91ca44bde3c518d02d78f7c461f7e47a6a91798649b91a",
+      "sha256": "7e753c859b0ede0b5e28e27015e1ffe57e8235aa5d0394a4fcb74dae684cb630",
       "resolution": "1920x1080",
       "fps": 24,
       "duration_sec": 302.261,

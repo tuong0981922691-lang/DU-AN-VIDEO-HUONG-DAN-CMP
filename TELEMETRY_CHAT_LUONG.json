@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project_name": "XƯỞNG VIDEO HƯỚNG DẪN AI (CMP DESKTOP)",
   "repository": "tuong0981922691-lang/DU-AN-VIDEO-HUONG-DAN-CMP",
-  "last_audit_timestamp": "2026-10-23T04:55:05+07:00",
+  "last_audit_timestamp": "2026-10-23T05:11:10+07:00",
   "current_milestone": "K07_G5_QA_FAIL_K08_HOLD",
   "next_milestone": "REPAIR_G5_DURATION_ALIGNMENT_AND_C2_REVIEW_BEFORE_K08",
   "technical_audit_metrics": {
@@ -15,8 +15,8 @@
     "preflight_gate_status": "XANH_EXIT_0_DEFINED_CHECKS_L14_UNVERIFIED",
     "preflight_l14_definition": "UNVERIFIED_MISSING_SOURCE_DEFINITION",
     "disk_free_gib": {
-      "C": 82.839,
-      "E": 38.7,
+      "C": 82.8,
+      "E": 38.663,
       "C_floor_gib": 15,
       "E_floor_gib": 10
     },
@@ -62,7 +62,8 @@
       "storyboard_sha256": "1f0833cad97a400159f23fe3933e4d7ac090f6e39c12c3d29f06bff24e182bd6",
       "screenshots_captured": 0,
       "handrig_rendered": false
-    }
+    },
+    "storyboard_file_sha256": "1f0833cad97a400159f23fe3933e4d7ac090f6e39c12c3d29f06bff24e182bd6"
   },
   "runtime_environment": {
     "backend_service": "src/studio_backend_8760.py",
@@ -70,7 +71,7 @@
     "binding": "127.0.0.1 (Loopback only)",
     "process_id": 924,
     "http_status": 200,
-    "checked_at": "2026-10-23T04:54:02+07:00",
+    "checked_at": "2026-10-23T05:11:10+07:00",
     "security_status": "LOOPBACK_LISTENER_RESPONDED; NO_EXTERNAL_BINDING_OBSERVED"
   },
   "discipline_and_compliance": {
@@ -123,7 +124,7 @@
     "file_name": null,
     "sha256": null,
     "measured_duration_sec": null,
-    "reason": "K07 MP4 audio/video duration mismatch; C2 acceptance pending; current TTS and renderer are metadata-only"
+    "reason": "K08 was not started: G5/K07 media duration mismatch and C2 acceptance pending; source TTS/renderer explicitly produce metadata only"
   },
   "k07_to_k08_gate": {
     "decision": "HOLD_K08",
@@ -133,5 +134,15 @@
       "NO_PRODUCTION_TTS_OR_RENDERER"
     ],
     "final_artifact_sha256": null
+  },
+  "delivery_gate": {
+    "repository": "tuong0981922691-lang/DU-AN-VIDEO-HUONG-DAN-CMP",
+    "branch": "main",
+    "local_head_commit_sha": "14348da86b54dcbffb9d57ccb52f6c31e0d767aa",
+    "remote_verified": false,
+    "remote_commit_sha": null,
+    "viewer_permission": "READ",
+    "push_result": "BLOCKED_HTTP_403_INSUFFICIENT_REPOSITORY_WRITE_PERMISSION",
+    "status": "INCOMPLETE_REMOTE_PUSH_GATE"
   }
 }

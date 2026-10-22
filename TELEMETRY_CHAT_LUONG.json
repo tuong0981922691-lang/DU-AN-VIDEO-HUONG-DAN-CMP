@@ -2,69 +2,136 @@
   "schema_version": "1.0.0",
   "project_name": "XƯỞNG VIDEO HƯỚNG DẪN AI (CMP DESKTOP)",
   "repository": "tuong0981922691-lang/DU-AN-VIDEO-HUONG-DAN-CMP",
-  "last_audit_timestamp": "2026-10-23T04:41:00+07:00",
-  "current_milestone": "K07_RENDER_MAU_G5_CHO_NGHIEM_THU",
-  "next_milestone": "K08_RENDER_TRON_9_CHUONG_15_PHUT",
+  "last_audit_timestamp": "2026-10-23T04:55:05+07:00",
+  "current_milestone": "K07_G5_QA_FAIL_K08_HOLD",
+  "next_milestone": "REPAIR_G5_DURATION_ALIGNMENT_AND_C2_REVIEW_BEFORE_K08",
   "technical_audit_metrics": {
     "total_unit_tests": 147,
     "tests_passed": 147,
     "tests_failed": 0,
     "test_pass_rate": "100%",
     "dap_do_adversarial_score": "10/10",
-    "preflight_gate_status": "XANH_EXIT_0",
-    "empty_shell_count": 0
+    "dap_do_source_sha256": "372bc3f873c852b43b5551f0abf85f20e83d9d276f3f9698ca52f75046bebed8",
+    "preflight_gate_status": "XANH_EXIT_0_DEFINED_CHECKS_L14_UNVERIFIED",
+    "preflight_l14_definition": "UNVERIFIED_MISSING_SOURCE_DEFINITION",
+    "disk_free_gib": {
+      "C": 82.839,
+      "E": 38.7,
+      "C_floor_gib": 15,
+      "E_floor_gib": 10
+    },
+    "empty_shell_count": 0,
+    "so_viec_lines": 400,
+    "k06_chapters_mapped": "9/9"
   },
   "quality_gate_evidence": {
-    "c174_voice_lock_sha256": "17bb63898ea8aa9bd016b6f385d4516cdf9ed5064b91bc6401eafa2db30065b8",
     "script_word_budget": {
-      "words_count": 4529,
+      "words_count": 4564,
+      "chapter_words": [
+        531,
+        530,
+        519,
+        518,
+        473,
+        507,
+        481,
+        495,
+        510
+      ],
       "budget_range": "4050-5100",
       "status": "WITHIN_BUDGET"
     },
     "script_duration": {
-      "estimated_sec": 1075,
+      "contract_metadata_sec": 1075,
       "floor_sec": 900,
-      "status": "MEETS_FLOOR"
+      "status": "METADATA_ONLY_NOT_MEASURED_MEDIA"
     },
     "local_evidence_verification": {
       "local_rows_verified": 8,
       "byte_match_sha256": "8/8 PASSED",
-      "path_containment": "CONFIRMED_INSIDE_WORKSPACE"
-    }
-  },
-  "verified_media_artifacts": {
-    "audio_g4_preview": {
-      "title": "Mẫu âm thanh 3 phút đối thoại Huy Tưởng & Xuân Công",
-      "file_name": "G4_mau_am_thanh_3_phut_MAI1_MAI2_48kHz.wav",
-      "sha256": "30ce4e794413b76eecd3850bda3416025730c695a200e7929ddb8b79ad79f1f2",
-      "format": "48000Hz mono 16-bit WAV",
-      "duration_sec": 302.261,
-      "rms_lufs": -14.32,
-      "peak_dbfs": -1.0,
-      "silence_hole_max_ms": 280,
-      "status": "APPROVED_READY_FOR_C2"
+      "path_containment": "CONFIRMED_INSIDE_WORKSPACE",
+      "verification_run": "CURRENT_LOCAL_RECHECK"
     },
-    "video_g5_preview": {
-      "title": "Mẫu video 1080p Whiteboard Hand-Rig c172 kết hợp đồ họa kỹ thuật",
-      "file_name": "G5_mau_video_c172_3_phut_MAI1_MAI2_1080p.mp4",
-      "sha256": "7e753c859b0ede0b5e28e27015e1ffe57e8235aa5d0394a4fcb74dae684cb630",
-      "resolution": "1920x1080",
-      "fps": 24,
-      "duration_sec": 302.261,
-      "hand_rig_spec": "V-900 / HandRig 0.3 pen-tip aligned",
-      "status": "APPROVED_READY_FOR_C2"
+    "script_revision": "0.4",
+    "c174_script_record_sha256": "1c965ef9c69da3e5cba099c2832bc7365333b30682759e1c65d456342fa7d090",
+    "script_file_sha256": "0d55c10c39c18d266e944c13b0d8f8109bdc5e55341c70122cd239a4cd0f262c",
+    "script_revision_approval": "PENDING_C2; earlier approved revision is 0.2; current revision is not aligned to existing sample media",
+    "k06_storyboard": {
+      "chapters_mapped": "9/9",
+      "cue_timecodes": "CONTRACT_ESTIMATES_NOT_MEDIA_MEASUREMENTS",
+      "storyboard_sha256": "1f0833cad97a400159f23fe3933e4d7ac090f6e39c12c3d29f06bff24e182bd6",
+      "screenshots_captured": 0,
+      "handrig_rendered": false
     }
   },
   "runtime_environment": {
     "backend_service": "src/studio_backend_8760.py",
     "port": 8765,
     "binding": "127.0.0.1 (Loopback only)",
-    "security_status": "NO_EXTERNAL_EXPOSURE"
+    "process_id": 924,
+    "http_status": 200,
+    "checked_at": "2026-10-23T04:54:02+07:00",
+    "security_status": "LOOPBACK_LISTENER_RESPONDED; NO_EXTERNAL_BINDING_OBSERVED"
   },
   "discipline_and_compliance": {
     "so_viec_lines": 400,
     "so_viec_ceiling_400_lines": "STRICTLY_COMPLIED",
-    "c2_285_secret_exposure": "ZERO_LEAKS",
-    "c2_298_news_factory_protection": "ISOLATED_PORT_8765_SAFE"
+    "c2_285_secret_exposure": "ZERO_FINDINGS_IN_PUBLIC_TELEMETRY",
+    "c2_298_news_factory_protection": "ISOLATED_PORT_8765_SAFE",
+    "public_payload_scope": "TELEMETRY_ONLY; PRIVATE_DU_LIEU_EXCLUDED",
+    "public_payload_security_scan": {
+      "scope": "TELEMETRY_CHAT_LUONG.json",
+      "json_valid": true,
+      "personal_email_matches": 0,
+      "credential_value_matches": 0,
+      "personal_user_path_matches": 0,
+      "status": "PASS"
+    }
+  },
+  "measured_preview_artifacts": {
+    "audio_g4_preview": {
+      "title": "G4 MAI1+MAI2 WAV preview - measured duration 302.261s",
+      "file_name": "G4_mau_am_thanh_3_phut_MAI1_MAI2_48kHz.wav",
+      "sha256": "30ce4e794413b76eecd3850bda3416025730c695a200e7929ddb8b79ad79f1f2",
+      "format": "48000Hz mono 16-bit WAV",
+      "duration_sec": 302.2608125,
+      "rms_lufs": -14.32,
+      "peak_dbfs": -1.0,
+      "silence_hole_max_ms": 280,
+      "status": "VERIFIED_LOCAL_C2_REVIEW_PENDING_REVISION_ALIGNMENT_UNVERIFIED",
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2
+    },
+    "video_g5_preview": {
+      "title": "G5 c172 Whiteboard MP4 preview - measured duration",
+      "file_name": "G5_mau_video_c172_3_phut_MAI1_MAI2_1080p.mp4",
+      "sha256": "7e753c859b0ede0b5e28e27015e1ffe57e8235aa5d0394a4fcb74dae684cb630",
+      "resolution": "1920x1080",
+      "fps": 24,
+      "duration_sec": 293.416667,
+      "status": "BLOCKED_DURATION_MISMATCH_C2_ACCEPTANCE_PENDING",
+      "container_video_duration_sec": 293.416667,
+      "embedded_audio_duration_sec": 233.408,
+      "source_wav_duration_sec": 302.2608125,
+      "audio_shortfall_vs_source_wav_sec": 68.852812,
+      "video_audio_tail_difference_sec": 60.008667
+    }
+  },
+  "k08_final_artifact": {
+    "status": "NOT_RENDERED_GATED",
+    "file_name": null,
+    "sha256": null,
+    "measured_duration_sec": null,
+    "reason": "K07 MP4 audio/video duration mismatch; C2 acceptance pending; current TTS and renderer are metadata-only"
+  },
+  "k07_to_k08_gate": {
+    "decision": "HOLD_K08",
+    "reason_codes": [
+      "K07_DURATION_MISMATCH",
+      "C2_K07_ACCEPTANCE_PENDING",
+      "NO_PRODUCTION_TTS_OR_RENDERER"
+    ],
+    "final_artifact_sha256": null
   }
 }

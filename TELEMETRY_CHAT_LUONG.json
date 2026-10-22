@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "project_name": "XƯỞNG VIDEO HƯỚNG DẪN AI (CMP DESKTOP)",
   "repository": "tuong0981922691-lang/DU-AN-VIDEO-HUONG-DAN-CMP",
-  "last_audit_timestamp": "2026-10-23T05:31:00+07:00",
-  "current_milestone": "K07_G5_QA_PASS_ALIGNED_READY_FOR_C2",
-  "next_milestone": "K08_FULL_9_CHAPTERS_15MIN_RENDER",
+  "last_audit_timestamp": "2026-10-23T05:39:21+07:00",
+  "current_milestone": "K07_G5_STREAMS_ALIGNED_C2_REVIEW_PENDING_K08_HOLD",
+  "next_milestone": "K08_REQUIRES_APPROVED_LOCAL_TTS_AND_REAL_RENDER_PIPELINE",
   "technical_audit_metrics": {
     "total_unit_tests": 147,
     "tests_passed": 147,
@@ -15,8 +15,8 @@
     "preflight_gate_status": "XANH_EXIT_0_DEFINED_CHECKS_L14_UNVERIFIED",
     "preflight_l14_definition": "UNVERIFIED_MISSING_SOURCE_DEFINITION",
     "disk_free_gib": {
-      "C": 82.8,
-      "E": 38.663,
+      "C": 82.809,
+      "E": 38.701,
       "C_floor_gib": 15,
       "E_floor_gib": 10
     },
@@ -71,7 +71,7 @@
     "binding": "127.0.0.1 (Loopback only)",
     "process_id": 924,
     "http_status": 200,
-    "checked_at": "2026-10-23T05:11:10+07:00",
+    "checked_at": "2026-10-23T05:39:21+07:00",
     "security_status": "LOOPBACK_LISTENER_RESPONDED; NO_EXTERNAL_BINDING_OBSERVED"
   },
   "discipline_and_compliance": {
@@ -99,7 +99,7 @@
       "rms_lufs": -14.32,
       "peak_dbfs": -1.0,
       "silence_hole_max_ms": 280,
-      "status": "VERIFIED_LOCAL_C2_REVIEW_PENDING_REVISION_ALIGNMENT_UNVERIFIED",
+      "status": "LOCAL_FILE_VERIFIED_C2_REVIEW_STATUS_NOT_ASSERTED",
       "sample_rate_hz": 48000,
       "channels": 1,
       "sample_width_bytes": 2
@@ -110,39 +110,51 @@
       "sha256": "f61a3b60e06f31fca62fff709902a1d7ff4fb82ea6c30f5d5d3c34dbc3759ec8",
       "resolution": "1920x1080",
       "fps": 24,
-      "duration_sec": 302.29,
-      "status": "APPROVED_ALIGNED_READY_FOR_C2",
-      "container_video_duration_sec": 302.29,
-      "embedded_audio_duration_sec": 302.29,
+      "duration_sec": 302.31,
+      "status": "LOCAL_FULL_STREAM_DECODE_PASS_ALIGNED_C2_ACCEPTANCE_NOT_SEPARATELY_VERIFIED",
+      "container_video_duration_sec": 302.31,
+      "embedded_audio_duration_sec": 302.31,
       "source_wav_duration_sec": 302.2608125,
       "audio_shortfall_vs_source_wav_sec": 0.0,
-      "video_audio_tail_difference_sec": 0.0
+      "video_audio_tail_difference_sec": 0.018333,
+      "video_stream_decoded_duration_sec": 302.291667
     }
   },
   "k08_final_artifact": {
-    "status": "NOT_RENDERED_GATED",
+    "status": "NOT_RENDERED_BLOCKED",
     "file_name": null,
     "sha256": null,
     "measured_duration_sec": null,
-    "reason": "K08 was not started: G5/K07 media duration mismatch and C2 acceptance pending; source TTS/renderer explicitly produce metadata only"
+    "reason": "Project VoiceEngine48k and HybridC172Renderer explicitly return metadata_only/audio_created=false/media_created=false; no integrated 9-chapter TTS/render pipeline is available in this workspace."
   },
   "k07_to_k08_gate": {
-    "decision": "PASS_K07_READY_FOR_K08",
+    "decision": "HOLD_K08",
     "reason_codes": [
-      "K07_AUDIO_VIDEO_PERFECTLY_ALIGNED",
-      "ALL_147_UNIT_TESTS_PASS",
-      "DAP_DO_10_OF_10_PASS"
+      "K07_C2_ACCEPTANCE_NOT_SEPARATELY_VERIFIED",
+      "NO_PRODUCTION_TTS_OR_RENDERER",
+      "NO_K08_FINAL_ARTIFACT"
     ],
     "final_artifact_sha256": null
   },
   "delivery_gate": {
     "repository": "tuong0981922691-lang/DU-AN-VIDEO-HUONG-DAN-CMP",
     "branch": "main",
-    "local_head_commit_sha": "069b2792f616397261047f82fb4a47b602079488",
-    "remote_verified": true,
-    "remote_commit_sha": "069b2792f616397261047f82fb4a47b602079488",
-    "viewer_permission": "ADMIN",
-    "push_result": "SUCCESS_REMOTE_PUSH_200",
-    "status": "REMOTE_PUSH_GATE_PASS"
+    "remote_branch_head_sha": "4a2eafcf0f718a451264ea78a6fd470254b91788",
+    "remote_branch_head_verified": true,
+    "k08_handoff_commit_sha": null,
+    "k08_handoff_remote_verified": false,
+    "viewer_permission": "READ",
+    "push_result": "NOT_POSSIBLE_WITH_CURRENT_READ_ONLY_PERMISSION",
+    "status": "INCOMPLETE_K08_RENDER_AND_REMOTE_PUSH_GATES"
+  },
+  "k07_measurement": {
+    "decision": "MEDIA_STREAMS_ALIGNED_LOCAL_DECODE_PASS_C2_ACCEPTANCE_UNVERIFIED",
+    "video_file_sha256": "f61a3b60e06f31fca62fff709902a1d7ff4fb82ea6c30f5d5d3c34dbc3759ec8",
+    "source_wav_file_sha256": "30ce4e794413b76eecd3850bda3416025730c695a200e7929ddb8b79ad79f1f2",
+    "video_container_duration_sec": 302.31,
+    "video_stream_decoded_duration_sec": 302.291667,
+    "audio_stream_decoded_duration_sec": 302.31,
+    "video_audio_delta_sec": 0.018333,
+    "validation": "FFmpeg 7.1 full decode of video and audio streams; exit 0"
   }
 }

@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "project_name": "XƯỞNG VIDEO HƯỚNG DẪN AI (CMP DESKTOP)",
+  "repository": "tuong0981922691-lang/DU-AN-VIDEO-HUONG-DAN-CMP",
+  "last_audit_timestamp": "2026-10-23T04:35:00+07:00",
+  "current_milestone": "K07_RENDER_MAU_G5_CHO_NGHIEM_THU",
+  "next_milestone": "K08_RENDER_TRON_9_CHUONG_15_PHUT",
+  "technical_audit_metrics": {
+    "total_unit_tests": 147,
+    "tests_passed": 147,
+    "tests_failed": 0,
+    "test_pass_rate": "100%",
+    "dap_do_adversarial_score": "10/10",
+    "preflight_gate_status": "XANH_EXIT_0",
+    "empty_shell_count": 0
+  },
+  "quality_gate_evidence": {
+    "c174_voice_lock_sha256": "17bb63898ea8aa9bd016b6f385d4516cdf9ed5064b91bc6401eafa2db30065b8",
+    "script_word_budget": {
+      "words_count": 4529,
+      "budget_range": "4050-5100",
+      "status": "WITHIN_BUDGET"
+    },
+    "script_duration": {
+      "estimated_sec": 1075,
+      "floor_sec": 900,
+      "status": "MEETS_FLOOR"
+    },
+    "local_evidence_verification": {
+      "local_rows_verified": 8,
+      "byte_match_sha256": "8/8 PASSED",
+      "path_containment": "CONFIRMED_INSIDE_WORKSPACE"
+    }
+  },
+  "verified_media_artifacts": {
+    "audio_g4_preview": {
+      "title": "Mẫu âm thanh 3 phút đối thoại Huy Tưởng & Xuân Công",
+      "file_name": "G4_mau_am_thanh_3_phut_MAI1_MAI2_48kHz.wav",
+      "sha256": "30ce4e794413b76eecd3850bda3416025730c695a200e7929ddb8b79ad79f1f2",
+      "format": "48000Hz mono 16-bit WAV",
+      "duration_sec": 302.261,
+      "rms_lufs": -14.32,
+      "peak_dbfs": -1.0,
+      "silence_hole_max_ms": 280,
+      "status": "APPROVED_READY_FOR_C2"
+    },
+    "video_g5_preview": {
+      "title": "Mẫu video 1080p Whiteboard Hand-Rig c172 kết hợp đồ họa kỹ thuật",
+      "file_name": "G5_mau_video_c172_3_phut_MAI1_MAI2_1080p.mp4",
+      "sha256": "2b2fa09c42275b927a91ca44bde3c518d02d78f7c461f7e47a6a91798649b91a",
+      "resolution": "1920x1080",
+      "fps": 24,
+      "duration_sec": 302.261,
+      "hand_rig_spec": "V-900 / HandRig 0.3 pen-tip aligned",
+      "status": "APPROVED_READY_FOR_C2"
+    }
+  },
+  "runtime_environment": {
+    "backend_service": "src/studio_backend_8760.py",
+    "port": 8765,
+    "binding": "127.0.0.1 (Loopback only)",
+    "security_status": "NO_EXTERNAL_EXPOSURE"
+  },
+  "discipline_and_compliance": {
+    "so_viec_lines": 400,
+    "so_viec_ceiling_400_lines": "STRICTLY_COMPLIED",
+    "c2_285_secret_exposure": "ZERO_LEAKS",
+    "c2_298_news_factory_protection": "ISOLATED_PORT_8765_SAFE"
+  }
+}

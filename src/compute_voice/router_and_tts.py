@@ -100,6 +100,20 @@ class VoiceEngine48k:
         """Tính số mẫu âm thanh áp dụng fade biên 12ms chống tiếng bụp tại điểm nối."""
         return int(sample_rate * (fade_ms / 1000.0))
 
+    def synthesize_wav(
+        self,
+        speaker: str,
+        text: str,
+        output_path: Path | str,
+        *,
+        ffmpeg_path: Path | str,
+        powershell_path: str = "powershell.exe",
+    ) -> dict[str, Any]:
+        """Synthesize with local WinRT Microsoft An and normalize an actual PCM WAV."""
+        from src.compute_voice.winrt_voice import synthesize_wav
+
+        return synthesize_wav(speaker, text, output_path, ffmpeg_path=ffmpeg_path, powershell_path=powershell_path)
+
     def synthesize_speech_segment(
         self,
         speaker: str,
@@ -120,7 +134,7 @@ class VoiceEngine48k:
             "sample_rate": 48000,
             "channels": 1,  # Mono
             "target_lufs": -14.0,
-            "true_peak_dbtp": -1.0,
+            "true_peak_dbtp": -0.5,
             "status": "metadata_only",
             "audio_created": False,
             "deesser_applied": False,

@@ -13,6 +13,8 @@ Ném lỗi KhongDatChuan ngay lập tức nếu vi phạm hoặc lệch khóa gi
 
 from collections.abc import Mapping
 import math
+import subprocess
+import wave
 from pathlib import Path
 from typing import Any
 
@@ -94,6 +96,76 @@ class HybridC172Renderer:
 
     def __init__(self) -> None:
         self.hand_rig = HandRig03(edge_distance_px=86, pen_tip_error_px=0)
+
+    def render_chapter_video(
+        self,
+        *,
+        voice_lock_ok: bool,
+        scene_assets: Mapping[str, str | Path],
+        canvas_path: Path | str,
+        pointer_path: Path | str,
+        audio_path: Path | str,
+        output_path: Path | str,
+        ffmpeg_path: Path | str,
+        target_x: int,
+        target_y: int,
+        pointer_travel_sec: float = 3.0,
+    ) -> dict[str, Any]:
+        """Render a still technical canvas, purposeful moving pen target, and matching WAV to MP4."""
+        _validate_scene_mode_and_voice("c172_hybrid", voice_lock_ok)
+        validate_scene_render_contract("c172_hybrid", voice_lock_ok, scene_assets)
+        canvas = Path(canvas_path).resolve()
+        pointer = Path(pointer_path).resolve()
+        audio = Path(audio_path).resolve()
+        output = Path(output_path).resolve()
+        ffmpeg = Path(ffmpeg_path).resolve()
+        for label, path in (("canvas", canvas), ("pointer", pointer), ("audio", audio)):
+            if not path.is_file() or path.stat().st_size == 0:
+                raise KhongDatChuan(f"Render input {label} is missing or empty")
+        if output.suffix.lower() != ".mp4":
+            raise ValueError("Chapter video output must use .mp4")
+        if not ffmpeg.is_file():
+            raise FileNotFoundError(f"FFmpeg executable not found: {ffmpeg}")
+        if not (0 <= target_x < 1920 and 0 <= target_y < 1080):
+            raise ValueError("HandRig target must be inside the 1920x1080 canvas")
+        if not math.isfinite(pointer_travel_sec) or pointer_travel_sec <= 0:
+            raise ValueError("HandRig travel duration must be finite and positive")
+        with wave.open(str(audio), "rb") as wav:
+            if wav.getframerate() != 48000 or wav.getnchannels() != 1 or wav.getsampwidth() != 2:
+                raise KhongDatChuan("K08 voice input must be 48kHz mono PCM16 WAV")
+            audio_duration = wav.getnframes() / wav.getframerate()
+        output.parent.mkdir(parents=True, exist_ok=True)
+        start_x, start_y = 72, 890
+        pen_tip_x, pen_tip_y = 10, 76
+        end_x, end_y = target_x - pen_tip_x, target_y - pen_tip_y
+        x_expr = f"if(lt(t,{pointer_travel_sec}),{start_x}+({end_x-start_x})*t/{pointer_travel_sec},{end_x})"
+        y_expr = f"if(lt(t,{pointer_travel_sec}),{start_y}+({end_y-start_y})*t/{pointer_travel_sec},{end_y})"
+        frame_count = math.ceil(audio_duration * 24)
+        graph = (
+            "[0:v]scale=1920:1080,setsar=1,format=yuv420p[bg];"
+            f"[1:v]format=rgba,trim=duration={pointer_travel_sec},setpts=PTS-STARTPTS[pen];"
+            f"[bg][pen]overlay=x='{x_expr}':y='{y_expr}':eof_action=pass:repeatlast=0[v]"
+        )
+        command = [
+            str(ffmpeg), "-hide_banner", "-loglevel", "error", "-y",
+            "-loop", "1", "-framerate", "24", "-i", str(canvas),
+            "-loop", "1", "-framerate", "24", "-i", str(pointer),
+            "-i", str(audio), "-filter_complex", graph, "-map", "[v]", "-map", "2:a:0",
+            "-frames:v", str(frame_count), "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-tune", "stillimage",
+            "-pix_fmt", "yuv420p", "-r", "24", "-c:a", "aac", "-b:a", "192k",
+            "-movflags", "+faststart", str(output),
+        ]
+        rendered = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=1800)
+        if rendered.returncode != 0 or not output.is_file() or output.stat().st_size == 0:
+            output.unlink(missing_ok=True)
+            raise RuntimeError(f"FFmpeg chapter render failed: {rendered.stderr[-3000:]}")
+        return {
+            "media_created": True, "visual_mode": "c172_hybrid",
+            "video_path": str(output), "video_bytes": output.stat().st_size,
+            "audio_duration_sec": audio_duration, "fps": 24, "resolution": "1920x1080",
+            "handrig_target": {"x": target_x, "y": target_y, "travel_sec": pointer_travel_sec},
+            "scene_assets_verified": True,
+        }
 
     def render_scene(
         self,

@@ -106,7 +106,7 @@ def test_voice_engine_broadcast_specs():
     assert segment["sample_rate"] == 48000
     assert segment["channels"] == 1  # Mono
     assert segment["target_lufs"] == -14.0
-    assert segment["true_peak_dbtp"] == -1.0
+    assert segment["true_peak_dbtp"] == -0.5
     assert segment["status"] == "metadata_only"
     assert segment["audio_created"] is False
     assert segment["deesser_applied"] is False

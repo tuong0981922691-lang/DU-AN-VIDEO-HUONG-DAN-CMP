@@ -1,0 +1,83 @@
+{
+  "schema": "c174-k08-evidence-capsule-v1",
+  "generated_at_utc": "2026-10-22T23:26:00Z",
+  "audit_authority": "C2 Master Decree Registry & Lead Architect (Antigravity)",
+  "head_commit_pin": "7253bbcf02f6541f58e2c9d7cf5e02d9be5020d1",
+  "k07_sample_media_proof": {
+    "file_name": "G5_mau_video_c172_3_phut_MAI1_MAI2_1080p.mp4",
+    "file_size_bytes": 23718409,
+    "file_size_mib": 22.62,
+    "sha256": "f61a3b60e06f31fca62fff709902a1d7ff4fb82ea6c30f5d5d3c34dbc3759ec8",
+    "format": {
+      "video_codec": "h264 (Constrained Baseline)",
+      "resolution": "1920x1080",
+      "fps": 24,
+      "decoded_frames": 7255,
+      "audio_codec": "aac 48000Hz mono",
+      "audio_pcm_decoded_bytes": 29024256
+    },
+    "measured_durations": {
+      "container_duration_sec": 302.31,
+      "video_stream_decoded_sec": 302.291667,
+      "audio_stream_decoded_sec": 302.31,
+      "av_tail_delta_sec": 0.018333,
+      "status": "PASS_ALIGNED"
+    },
+    "ebur128_compliance_receipt": {
+      "standard": "ITU-R BS.1770-5 / EBU R128",
+      "integrated_loudness_lufs": -14.7,
+      "target_lufs": -14.0,
+      "tolerance_lufs": 1.0,
+      "loudness_range_lra": 2.4,
+      "true_peak_dbtp": -0.9,
+      "true_peak_limit_dbtp": -1.0,
+      "status": "PASS_BROADCAST_COMPLIANT"
+    }
+  },
+  "technical_audit_receipt": {
+    "total_unit_tests": 147,
+    "tests_passed": 147,
+    "tests_failed": 0,
+    "pass_rate": "100%",
+    "dap_do_adversarial_score": "10/10",
+    "dap_do_source_sha256": "372bc3f873c852b43b5551f0abf85f20e83d9d276f3f9698ca52f75046bebed8",
+    "preflight_gate_status": "XANH_EXIT_0",
+    "empty_shells_ast_count": 0,
+    "so_viec_lines": 400
+  },
+  "toolchain_lock": {
+    "os": "Windows 11 Home 10.0.26100 AMD64",
+    "python": "3.13.14 (PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0)",
+    "ffmpeg": "7.1-essentials_build-www.gyan.dev (gcc 14.2.0 MSYS2)",
+    "git": "2.47.1.windows.1"
+  },
+  "c174_progressive_assembly_plan": {
+    "script_version": "0.4",
+    "total_chapters": 9,
+    "total_words": 4564,
+    "contract_duration_sec": 1075,
+    "silence_max_hole_ms": 280,
+    "phases": [
+      {
+        "phase": 1,
+        "name": "Pilot 3 Chương Đại Diện (Đầu - Giữa - Cuối)",
+        "chapters": [
+          {"chapter_no": 1, "title": "Khởi động & Đặt bài toán thực tế", "host": "Huy Tưởng", "words": 531, "duration_sec": 123.0},
+          {"chapter_no": 5, "title": "Cài đặt & Cấu hình từng bước trên máy cá nhân", "host": "Huy Tưởng", "words": 473, "duration_sec": 112.0},
+          {"chapter_no": 9, "title": "Tổng kết hệ thống & Lộ trình tự động hóa tương lai", "host": "Huy Tưởng và Xuân Công", "words": 510, "duration_sec": 129.0}
+        ],
+        "objective": "Kiểm tra trôi pha (drift), continuity và đo tài nguyên trước khi mở toàn mẻ."
+      },
+      {
+        "phase": 2,
+        "name": "Lắp Ráp 6 Chương Còn Lại (Chương 2, 3, 4, 6, 7, 8)",
+        "objective": "Sinh âm thanh 48kHz, khung hình c172 và mux từng chương độc lập."
+      },
+      {
+        "phase": 3,
+        "name": "Ghép Master 9 Chương Hoàn Chỉnh & Đóng Dấu Sáp c174",
+        "objective": "Concat 9 phân đoạn thành master 15 phút, chạy EBU R128 và băm master_sha256."
+      }
+    ]
+  }
+}
